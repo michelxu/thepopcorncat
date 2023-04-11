@@ -1,0 +1,19 @@
+{
+  "name": "thepopcorncat",
+  "version": "1.0.0",
+  "description": "Movie website project using themoviedb.org API",
+  "main": "index.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/michelxu/thepopcorncat.git"
+  },
+  "author": "michelxu or something",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/michelxu/thepopcorncat/issues"
+  },
+  "homepage": "https://github.com/michelxu/thepopcorncat#readme"
+}

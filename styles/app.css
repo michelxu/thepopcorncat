@@ -1,0 +1,55 @@
+@import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.4/font/bootstrap-icons.css");
+
+
+body {
+  background-color: #18122B;
+}
+
+footer {
+  position: relative;
+  bottom: 0;
+  width: 100%;
+  background-color: #000000;
+  /*height: 60px;*/ /* Set the height of your footer here */
+}
+
+a{
+  color:#FDF4F5;
+  text-decoration: none;
+}
+
+a:hover{
+  color: #F15A59;
+}
+
+.footer2 {
+  position: relative;
+  bottom: 0;
+  width: 100%;
+  background-color: #030303;
+  /*height: 60px;*/ /* Set the height of your footer here */
+}
+
+/*Imagen Banner*/
+.img-banner{
+  height:60vh;
+  width:100%;
+  object-fit: cover;
+}
+
+.banner-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 60vh;
+  max-height: 60vh;
+  background: linear-gradient(to bottom, rgba(255, 255, 255, 0), rgba(24, 18, 43, 1));
+}
+
+/*Bloquear clicks en imagenes*/
+img.no-click {
+  pointer-events: none;
+}
+
+/*Centrar div's*/
