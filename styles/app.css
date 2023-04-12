@@ -7,8 +7,11 @@
   --bg-black-2: #030303;
 
   --white-text-color: #FDF4F5;
+  --white-text-color-2: #e9e9e9;
+  --white-text-color-3: #b3b3b3;
 
   --red-color: #F15A59;
+  --red-color-dark: #a63535;
 }
 
 body {
@@ -27,6 +30,14 @@ footer {
   width: 100%;
   background-color: #000000;
   /*height: 60px;*/ /* Set the height of your footer here */
+}
+
+footer .destacado {
+  font-size: 16px; /* smaller font size */
+  font-family: monospace;
+  color: var(--white-text-color-3);
+  padding: 8px;
+  margin: 0;
 }
 
 a{
@@ -58,6 +69,8 @@ a:hover{
 .movie-section {
   overflow-x: scroll;
   white-space: nowrap; /* prevents line breaks between movie items */
+  /*padding-left: 1rem;
+  padding-right: 1rem;*/
 }
 
 .movie-item {
@@ -71,6 +84,10 @@ a:hover{
 /*----------------- utils ------------------*/
 /*Bloquear clicks en imagenes*/
 img.no-click {
+  pointer-events: none;
+}
+
+.no-click {
   pointer-events: none;
 }
 
