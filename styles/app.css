@@ -68,6 +68,12 @@ footer .links {
 }
 /*---------- <p> main page ----------*/
 
+/*---------- <p> movie page ----------*/
+.movie-page a:hover {
+  color: var(--red-color);
+}
+/*---------- <p> movie page ----------*/
+
 a{
   color: var(--white-text-color);
   text-decoration: none;
@@ -77,7 +83,7 @@ a:hover{
   color: var(--red-color);
 }
 
-/*---------- Img Banner ----------*/
+/*---------- Img Banner Carousel ----------*/
 .img-banner{
   height:50vh;
   width:100%;
@@ -98,16 +104,27 @@ a:hover{
   z-index: 2; /* Ensure it's above the banner-overlay */
   color: white;
   text-align: center;
+  margin-left: -25px;
+  margin-right: -25px;
 }
 
 .banner-description h2 {
   font-size: 2.2rem;
   margin-bottom: 0;
+  display: -webkit-box; /*max lines per text*/
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }
 
 .banner-description p {
   font-size: 1rem;
   margin-top: 0;
+  margin-right: -50px;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }
 
 .banner-description a:hover {
@@ -120,7 +137,7 @@ a:hover{
   width:100%;
   object-fit: cover;
 }
-/*---------- Img Banner ----------*/
+/*---------- Img Banner Carousel ----------*/
 
 
 /*---------- Img thumbnail (cover) ----------*/
@@ -241,7 +258,7 @@ img.no-click {
 }
 
 .scroll-images::-webkit-scrollbar-thumb {
-  background-color: #aaa;
+  background-color: var(--red-color);
   border-radius: 10px;
 }
 

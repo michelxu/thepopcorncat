@@ -15,7 +15,7 @@ function navigator(){
     if (location.hash.length === 0 || location.hash.length === 1){
         mainPage();
 
-    } else if(location.hash.startsWith('#trends')){
+    } else if(location.hash.startsWith('#trending')){
         trendingPage();
 
     } else if(location.hash.startsWith('#search')){
@@ -34,9 +34,9 @@ function navigator(){
 }
 
 function mainPage(){
-    console.log('Main page');
+    console.log('Estás en la main page');
     hideFromDom('movie-page');
-    //hideFromDom('trending-page');
+    hideFromDom('trending-page');
     //hideFromDom('search-page');
     //hideFromDom('category-page');
     showElementsOnDom('main-page');
@@ -51,21 +51,40 @@ function mainPage(){
 
 function trendingPage(){
     console.log('Trending movies page');
+    hideFromDom('main-page');
+    hideFromDom('movie-page');
+    //hideFromDom('search-page');
+    //hideFromDom('category-page');
+    showElementsOnDom('trending-page');
+    window.scrollTo(0,0);
 }
 
 function searchPage(){
     console.log('Search page');
     hideFromDom('main-page');
+    hideFromDom('trending-page');
+    hideFromDom('movie-page');
+    //hideFromDom('category-page');
+    showElementsOnDom('search-page');
 }
 
 function categoryPage(){
     console.log('Categories page');
+    hideFromDom('main-page');
+    hideFromDom('movie-page');
+    //hideFromDom('search-page');
+    //hideFromDom('category-page');
+    showElementsOnDom('trending-page');
 }
 
 function moviePage(){
     console.log('Movie full page');
     hideFromDom('main-page');
+    hideFromDom('trending-page');
+    //hideFromDom('search-page');
+    //hideFromDom('category-page');
     showElementsOnDom('movie-page');
+    window.scrollTo(0,0);
 }
 
 //Listener para las categorias btns

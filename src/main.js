@@ -11,7 +11,7 @@ const api = axios.create({
 const baseImgUrl = 'https://image.tmdb.org/t/p/w300'; //from api
 const baseBgUrl = 'https://image.tmdb.org/t/p/original'; //from api
 
-//Fns
+//Trending movies de la main page & main carousel
 async function getTrendingMoviesPreview(mainParentDiv, genre){
     //con este IF implementamos 2 páginas más, la página de trending movies (que no es la página principal)
     //y la página de películas por género que también son trending movies sólo con un filtro extra.
@@ -32,32 +32,39 @@ async function getTrendingMoviesPreview(mainParentDiv, genre){
 
     try {
         let countMovies = 0;
+
         movies.forEach(movie => {
-            //Desplegar 3 filas (18 movies), la API regresa 20
-            if (countMovies === 18) return;
+            //************ Main Page Trending ************
+            if (countMovies === 18) return; //Display 18 movies (3 rows)
             
             //Situarse en section > div > _here_ para insertar contenido: 
             const sectionElement = document.getElementById(mainParentDiv); //'main-trending-movies'
             const childElement = sectionElement.querySelectorAll('div')[0];
 
-            const movieTemplate = createMovieTemplate(movie); //Llamado a la function que crea los elementos del DOM
+            const movieTemplate = createMovieTemplate(movie); //create DOM elements
             childElement.appendChild(movieTemplate); //insertar        
+            //************ Main Page Trending ************
 
             
-
-            if (countMovies < 3) {
-                //****** Carousel ******
+            //************ Carousel ************
+            if (countMovies < 5) { //# of movies to display
                 const carousel = document.getElementById('banner-carousel');
+
                 const childElement1 = carousel.querySelectorAll('div')[0];
                 const childElement2 = childElement1.querySelectorAll('div')[0];
 
-                const movieCarouselTemplate = createMovieCarousel(movie, ''); //Llamado a la function que crea los elementos del DOM            
+                let movieCarouselTemplate;
+                if (countMovies === 1) {
+                    movieCarouselTemplate = createMovieCarousel(movie, 'active');//movie, 'active' or ''
+                    const divToRemove = document.getElementById("carousel-template");
+                    divToRemove.remove();
+                } else{
+                    movieCarouselTemplate = createMovieCarousel(movie, '');//movie, 'active' or ''
+                }
+                
                 childElement2.appendChild(movieCarouselTemplate); //insertar 
-                //****** Carousel ******
-            } else{
-                //const divToRemove = document.getElementById("carousel-template");
-                //divToRemove.remove();
             }
+            //************ Carousel ************
             
 
             countMovies += 1; //Max 18 movies
@@ -68,6 +75,17 @@ async function getTrendingMoviesPreview(mainParentDiv, genre){
     } catch (error) {
         console.log(`Error Trending Movies Preview :(! ${error.message}`);
     }
+}
+
+//Si no se le pasa un id, obtendrá movies-trending para la página <trending --> ver más>
+async function getMoviesByCategory(category_id){
+    //preguntar si se le pasó o no el id y a partir de ahí crear la url de trending o de trending_by_genre
+    const url = '';
+    const { data } = await api(url);
+
+    const movies = data.results;
+    console.log('Trending movies');
+    console.log({data, movies});
 }
 
 //Latest Movies Main Page H-Scroll
@@ -140,6 +158,11 @@ function createMovieTemplate(movie){
     return containerMovie;
 }
 
+//Template para la sección completa de trendings, cualquier category, etc.
+function createMoviesFullPage(movie){
+    
+}
+
 //Crear movies para Horizontal Scroll Section
 function createMovieHorizontalScroll(movie){
     //Crear DIV container para cada movie
@@ -189,7 +212,7 @@ function createMovieCarousel(movie, item_active){
     //Crear DIV container para cada element del carousel
     const containerCarouselItem = document.createElement('div');
     containerCarouselItem.classList = `carousel-item ${item_active}`;
-    //childElement.appendChild(containerCarouselItem); en el metodo llamada a api
+    //childElement.appendChild(containerCarouselItem); linea en getTrendingMoviesPreview()
 
     //Crear IMG Movie banner
     const movieImg = document.createElement('img');
@@ -224,7 +247,7 @@ function createMovieCarousel(movie, item_active){
     movieDescription.innerText = `${movie.overview}`;
 
     const viewMoreBtn = document.createElement('button');
-    viewMoreBtn.classList = 'btn btn-danger';
+    viewMoreBtn.classList = 'btn btn-warning';
     viewMoreBtn.innerHTML = 'View more';
 
     aElement.appendChild(movieTitle); //insert
