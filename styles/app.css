@@ -3,12 +3,15 @@
 :root{
   --bg-color-1: #18122B;
   --bg-color-2: #08060e;
+  --bg-color-3: #1c1533;
 
   --bg-black-2: #030303;
 
   --white-text-color: #FDF4F5;
   --white-text-color-2: #e9e9e9;
   --white-text-color-3: #b3b3b3;
+
+  --blue-color: #4857ff;
 
   --red-color: #F15A59;
   --red-color-dark: #a63535;
@@ -36,9 +39,34 @@ footer .destacado {
   font-size: 16px; /* smaller font size */
   font-family: monospace;
   color: var(--white-text-color-3);
-  padding: 8px;
+  padding-top: 0;
   margin: 0;
 }
+
+footer .links {
+  font-size: 14px; /* smaller font size */
+}
+
+/*---------- <p> main page ----------*/
+.main-page-movie-title {
+  font-size: 14px;
+  color: var(--white-text-color-2);
+  line-height: 1.2;
+
+  /*max 2 lineas de texto*/
+  max-height: calc(2 * 1.2em);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+
+  padding: 0px;
+  margin: 0;
+
+  max-width: 150px;
+}
+/*---------- <p> main page ----------*/
 
 a{
   color: var(--white-text-color);
@@ -49,9 +77,9 @@ a:hover{
   color: var(--red-color);
 }
 
-/*Imagen Banner ------->*/
+/*---------- Img Banner ----------*/
 .img-banner{
-  height:60vh;
+  height:50vh;
   width:100%;
   object-fit: cover;
 }
@@ -61,24 +89,92 @@ a:hover{
   bottom: 0;
   left: 0;
   right: 0;
-  height: 60vh;
-  max-height: 60vh;
+  height: 100%; /*antes estaba en 60vh*/
+  max-height: 50vh;
   background: linear-gradient(to bottom, rgba(255, 255, 255, 0), rgba(24, 18, 43, 1));
 }
 
+.banner-description {
+  z-index: 2; /* Ensure it's above the banner-overlay */
+  color: white;
+  text-align: center;
+}
+
+.banner-description h2 {
+  font-size: 2.2rem;
+  margin-bottom: 0;
+}
+
+.banner-description p {
+  font-size: 1rem;
+  margin-top: 0;
+}
+
+.banner-description a:hover {
+  color: white;
+}
+
+/*Banner for Movie page*/
+.movie-banner{
+  height:30vh;
+  width:100%;
+  object-fit: cover;
+}
+/*---------- Img Banner ----------*/
+
+
+/*---------- Img thumbnail (cover) ----------*/
+.thumbnail {
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+}
+
+.thumbnail:hover {
+  filter: saturate(150%);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  transform: scale(1);
+}
+
+.thumbnail-2:hover > p {
+  color: var(--red-color);
+}
+/*---------- Img thumbnail (cover) ----------*/
+
+
+/*---------- Movie Horizontal Container v1 ----------*/
 .movie-section {
   overflow-x: scroll;
   white-space: nowrap; /* prevents line breaks between movie items */
   /*padding-left: 1rem;
   padding-right: 1rem;*/
 }
-
 .movie-item {
   display: inline-block;
   margin-right: 1rem; /* spacing between movie items */
 }
+/*---------- Movie Horizontal Container v1 ----------*/
 
 
+/*---------- Para posicionar el botón con el año de la película ----------*/
+.movie-image-container {
+  position: relative;
+  width: 150px; /* Set the width of the container */
+}
+
+.release-year {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  background-color: var(--red-color);
+  color: #fff; /* Set the text color of the button */
+  padding-top: 2px;
+  padding-bottom: 3px;
+  padding-left: 5px;
+  padding-right: 5px;
+  font-size: 12px;
+  border: none; /* Remove the border of the button */
+  border-radius: 5px;
+}
+/*---------- Para posicionar el botón con el año de la película ----------*/
 
 
 /*----------------- utils ------------------*/
@@ -102,6 +198,8 @@ img.no-click {
 /* Hide the scrollbar track */
 ::-webkit-scrollbar-track {
   display: none;
+  background-color: #e9e9e9;
+  border-radius: 10px;
 }
 
 /* Set the width of the scrollbar */
@@ -112,12 +210,64 @@ img.no-click {
 
 /* Set the color of the scrollbar thumb */
 ::-webkit-scrollbar-thumb {
-  background-color: #ccc;
+  background-color: #aeaeae;
   border-radius: 10px;
 }
 
 /* Set the color of the scrollbar thumb when hovering */
 ::-webkit-scrollbar-thumb:hover {
-  background-color: #aaa;
+  background-color: #aeaeae;
 }
 /*----------------- scrollbar ------------------*/
+
+
+/*----------------- horizontal section arrows ------------------*/
+.scroll-images {
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+}
+
+.scroll-images::-webkit-scrollbar {
+  width: 5px;
+  height: 8px;
+  background-color: #ccc;
+  border-radius: 10px;
+}
+
+.scroll-images::-webkit-scrollbar-thumb {
+  background-color: #aaa;
+  border-radius: 10px;
+}
+
+.scroll-images::-webkit-scrollbar-thumb:hover {
+  background-color: var(--red-color);
+  border-radius: 10px;
+}
+
+/*arrows*/
+.cover {
+  position: relative;
+}
+.left {
+  position: absolute;
+  left: 0;
+  top: 45%;
+  transform: translateY(-50%);
+}
+.right {
+  position: absolute;
+  right: 0;
+  top: 45%;
+  transform: translateY(-50%);
+}
+.scroll-images::-webkit-scrollbar {
+  -webkit-appearance: auto;
+  display: auto;
+}
+/*----------------- horizontal section arrows ------------------*/
