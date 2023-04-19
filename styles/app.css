@@ -19,16 +19,24 @@
 
 body {
   display: flex;
+  position: relative; /*adjust footer to bottom*/
+  min-height: 100vh; /*adjust footer to bottom*/
   flex-direction: column;
   background-color: var(--bg-color-1);
 }
 
-main {
-  min-height: calc(100vh - 213px); /* adjust height based on header and footer height */
+.content { /*adjust footer to bottom*/
+  padding-bottom: 200px; /* Set the height of your footer here */
 }
 
+/*
+main {
+  min-height: calc(100vh - 213px); /* adjust height based on header and footer height
+}
+*/
+
 footer {
-  position: relative;
+  position: absolute; /*adjust footer to bottom*/
   bottom: 0;
   width: 100%;
   background-color: #000000;
@@ -136,18 +144,19 @@ a:hover{
   height:30vh;
   width:100%;
   object-fit: cover;
+  filter: opacity(75%);
 }
 /*---------- Img Banner Carousel ----------*/
 
 
 /*---------- Img thumbnail (cover) ----------*/
 .thumbnail {
-  box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 0 2px rgba(0, 0, 0, 0.5);
 }
 
 .thumbnail:hover {
   filter: saturate(150%);
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 0 6px rgba(0, 0, 0, 0.5);
   transform: scale(1);
 }
 
@@ -288,3 +297,9 @@ img.no-click {
   display: auto;
 }
 /*----------------- horizontal section arrows ------------------*/
+
+
+.fb-comments {
+  background-color: var(--bg-color-1);
+  color: var(--white-text-color);
+}

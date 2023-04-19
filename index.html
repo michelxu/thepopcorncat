@@ -23,13 +23,13 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Home</a>
+                        <a class="nav-link" href="#"><i class="bi bi-house-door-fill"></i> Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">About</a>
+                        <a class="nav-link" href="javascript:void(0)" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="bi bi-heart-fill"></i> About</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Contact</a>
+                        <a class="nav-link" href="javascript:void(0)" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="bi bi-person-circle"></i> Contact</a>
                     </li>
                 </ul>
             </div>
@@ -37,7 +37,154 @@
     </nav>
     <!--Navbar-->
 
-    <main class="main-page">
+
+    <!-- *********** MOVIE PAGE ***********-->
+    <!--Banner-->
+    <section class="position-relative movie-page" id="banner-movie-page">
+        <img src="./img/cat_bg_3.png" class="movie-banner" alt="Banner">
+        <div class="position-absolute bottom-0 w-100 banner-overlay"></div>
+    </section>
+    <!--Section Movie-->
+    <section class="mb-5 movie-page" id="content-movie-page">
+        <div class="col-12 text-center text-md-start mx-auto mb-3" style="max-width: 1024px;">
+            <a class="text-secondary mx-auto ms-0 ms-md-3" href="#">Home > </a>
+            <a class="text-secondary mx-auto" href="javascript:void(0)">Movies > Movie title (2019)</a>
+        </div>
+        <div class="container-fluid d-flex justify-content-center">
+            <div class="row mx-auto movie-info">
+                <div class="col-12 col-lg-auto mb-3 text-center">
+                    <img src="./img/default-poster-movie.png" class="rounded-2 mb-2 thumbnail" height="450px" width="300px">
+                </div>
+                <div class="col-12 col-lg-auto mx-1 text-start">
+                    <h4 class="movie-title text-light ms-0 mb-3">Movie Title</h4>
+                    <p class="movie-genre text-light ms-0 mb-2">Action, Drama</p>
+                    <p class="movie-rating text-light ms-0 mb-2">Rating: 8.5</p>
+                    <p class="movie-release-year text-light ms-0 mb-2">Release Year: 2023</p>
+                    <p class="movie-duration text-light ms-0 mb-3">Duration: 1h 32m</p>
+                    <div class="mb-4" style="max-width: 550px;">
+                        <p class="text-light movie-description" style="font-size: 14px;">
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                            Fusce aliquam odio sed neque tincidunt, sed iaculis nulla lacinia. Nulla posuere risus ac augue maximus, vel pretium odio tempor.
+                        </p>
+                    </div>
+                    <!--Dropdown: Region for streaming providers-->
+                    <div class="dropdown">
+                        <button type="button" class="btn btn-danger btn-sm dropdown-toggle dropdown-country-button mb-2" data-bs-toggle="dropdown" aria-expanded="true">
+                            <i class="bi bi-globe-americas"></i> US-United States
+                        </button>
+                        <ul class="dropdown-menu" style="width: 150px;">
+                            <li><a class="dropdown-item" onclick="listenerDropdownMenu('AR-Argentina')">Argentina 🇦🇷</a></li>
+                            <li><a class="dropdown-item" onclick="listenerDropdownMenu('BR-Brazil')">Brazil 🇧🇷</a></li>
+                            <li><a class="dropdown-item" onclick="listenerDropdownMenu('CA-Canada')">Canada 🇨🇦</a></li>
+                            <li><a class="dropdown-item" onclick="listenerDropdownMenu('CL-Chile')">Chile 🇨🇱</a></li>
+                            <li><a class="dropdown-item" onclick="listenerDropdownMenu('CO-Colombia')">Colombia 🇨🇴</a></li>
+                            <li><a class="dropdown-item" onclick="listenerDropdownMenu('ES-Spain')">Spain 🇪🇸</a></li>
+                            <li><a class="dropdown-item" onclick="listenerDropdownMenu('GB-United Kingdom')">United Kingdom 🇬🇧</a></li>
+                            <li><a class="dropdown-item" onclick="listenerDropdownMenu('JP-Japan')">Japan 🇯🇵</a></li>
+                            <li><a class="dropdown-item" onclick="listenerDropdownMenu('MX-Mexico')">Mexico 🇲🇽</a></li>
+                            <li><a class="dropdown-item" onclick="listenerDropdownMenu('PE-Peru')">Peru 🇵🇪</a></li>
+                            <li><a class="dropdown-item" onclick="listenerDropdownMenu('RU-Russia')">Russia 🇷🇺</a></li>
+                            <li><a class="dropdown-item" onclick="listenerDropdownMenu('US-United States')">United States 🇺🇸</a></li>
+                        </ul>
+                    </div>
+                    <!--Dropdown: Region for streaming providers-->
+                    <p class="movie-on-streaming-title text-light fw-medium ms-0 mb-1">On streaming (US)</p>
+                    <div class="d-flex flex-wrap mt-1 mb-2 movie-on-streaming-container">
+                        <!--<img src="img.png" class="img-fluid rounded-3 me-3 thumbnail" style="max-height: 40px;">-->
+                    </div>
+                    <p class="movie-on-free-title text-light fw-medium ms-0 mb-1">For free (US)</p>
+                    <div class="d-flex flex-wrap mt-1 mb-2 movie-on-free-container">
+                        <!--<img src="img.png" class="img-fluid rounded-3 me-3 thumbnail" style="max-height: 40px;">-->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- *********** MOVIE PAGE ***********-->
+
+
+    <!-- *********** TRENDING/ALL PAGE ***********-->
+    <!--Main Banner-->
+    <section class="position-relative mb-1 trending-page">
+        <img src="./img/cat_bg_3.png" class="all-movies movie-banner" alt="Banner">
+        <div class="position-absolute bottom-0 w-100 banner-overlay"></div>
+        <div class="position-absolute top-50 start-50 translate-middle banner-description ms-1" id="banner-all-movies-title">
+            <h2>Trending Movies</h2>
+        </div>
+    </section>
+    <!--navigation text-->
+    <div class="col-12 text-center text-md-start mx-auto mb-3 trending-page" id="navigation-all-movies" style="max-width: 1024px;">
+        <a class="text-secondary mx-auto ms-3" href="#">Home > </a>
+        <a class="text-secondary mx-auto" href="javascript:void(0)">Trending</a>
+    </div>
+    <!--Page Latest Movies-->
+    <section class="col-11 mx-auto mb-0 trending-page" id="page-trending-movies" style="max-width: 1042px;">
+        <div class="row mx-auto text-center mx-1 pb-5" id="all-movies-container"> <!--start here-->
+            <div class="col-6 col-sm-4 col-md-3 col-lg-2 mb-2 page-trending-template">
+                <a href="#" class="thumbnail-2" title="Movie Title">
+                    <div class="movie-image-container">
+                        <img src="https://via.placeholder.com/640x360" class="rounded-2 mb-2 thumbnail" height="225px" width="150px">
+                        <button class="release-year mb-3 ms-2">2023</button>
+                    </div>                        
+                    <p class="main-page-text">Movie Title</p>
+                </a>
+            </div>
+            <div class="col-6 col-sm-4 col-md-3 col-lg-2 mb-2 page-trending-template">
+                <a href="#" class="thumbnail-2" title="Movie Title">
+                    <div class="movie-image-container">
+                        <img src="https://via.placeholder.com/640x360" class="rounded-2 mb-2 thumbnail" height="225px" width="150px">
+                        <button class="release-year mb-3 ms-2">2022</button>
+                    </div>                        
+                    <p class="main-page-text">Movie Title</p>
+                </a>
+            </div>
+            <div class="col-6 col-sm-4 col-md-3 col-lg-2 mb-2 page-trending-template">
+                <a href="#" class="thumbnail-2" title="Movie Title">
+                    <div class="movie-image-container">
+                        <img src="https://via.placeholder.com/640x360" class="rounded-2 mb-2 thumbnail" height="225px" width="150px">
+                        <button class="release-year mb-3 ms-2">2023</button>
+                    </div>                        
+                    <p class="main-page-text">Movie Title</p>
+                </a>
+            </div>
+            <div class="col-6 col-sm-4 col-md-3 col-lg-2 mb-2 page-trending-template">
+                <a href="#" class="thumbnail-2" title="Movie Title">
+                    <div class="movie-image-container">
+                        <img src="https://via.placeholder.com/640x360" class="rounded-2 mb-2 thumbnail" height="225px" width="150px">
+                        <button class="release-year mb-3 ms-2">2022</button>
+                    </div>                        
+                    <p class="main-page-text">Movie Title</p>
+                </a>
+            </div>
+            <div class="col-6 col-sm-4 col-md-3 col-lg-2 mb-2 page-trending-template">
+                <a href="#" class="thumbnail-2" title="Movie Title">
+                    <div class="movie-image-container">
+                        <img src="https://via.placeholder.com/640x360" class="rounded-2 mb-2 thumbnail" height="225px" width="150px">
+                        <button class="release-year mb-3 ms-2">2023</button>
+                    </div>                        
+                    <p class="main-page-text">Movie Title</p>
+                </a>
+            </div>
+            <div class="col-6 col-sm-4 col-md-3 col-lg-2 mb-2 page-trending-template">
+                <a href="#" class="thumbnail-2" title="Movie Title">
+                    <div class="movie-image-container">
+                        <img src="https://via.placeholder.com/640x360" class="rounded-2 mb-2 thumbnail" height="225px" width="150px">
+                        <button class="release-year mb-3 ms-2">2022</button>
+                    </div>                        
+                    <p class="main-page-text">Movie Title</p>
+                </a>
+            </div>
+        </div>
+        <!--Load more button-->
+        <div class="col-sm-11 mx-auto text-center mb-5 page-trending-movies" style="max-width: 1042px;">
+            <button class="btn btn-danger" id="load-more-btn" onclick="">Load more</button>
+        </div>
+    </section>
+    <!--Page Latest Movies-->
+    <!-- *********** TRENDING/ALL PAGE ***********-->
+
+
+    <main class="content">
         <!--Main Banner w Carousel-->
         <section class="main-page">
             <div id="banner-carousel" class="carousel slide" data-bs-ride="carousel">
@@ -73,7 +220,7 @@
         <!--Search Bar-->
         <section class="col-sm-11 mx-auto text-center mb-5 main-page" style="max-width: 1042px;">
             <form class="d-flex mx-1">
-                <input class="form-control form-control-lg me-2" type="search" placeholder="Search Movies" aria-label="Search">
+                <input class="form-control form-control-lg me-2" id="search_input" type="search" autofocus placeholder="Search Movies" aria-label="Search" minlength="1">
                 <button class="btn btn-danger btn-lg" id="search_bar">Search</button>
             </form>
         </section>
@@ -105,11 +252,14 @@
         <!--Categories buttons-->
 
 
-        <!--Section Latest Movies-->
-        <div class="d-flex justify-content-between mx-auto mb-3 main-page" style="max-width: 1042px;">
-            <h3 class="text-light ms-3">Popular Movies</h3>
-            <a href="#trending"><button class="btn btn-sm me-3 btn-dark">More</button></a>
-        </div>
+        <!--Section Trending Movies-->
+        <section class="main-page">
+            <div class="d-flex justify-content-between mx-auto mb-3" style="max-width: 1042px;">
+                <h3 class="text-light ms-3">Trending Movies</h3>
+                <a href="#trending"><button class="btn btn-sm me-3 btn-dark">View More</button></a>
+            </div>
+        </section>
+        
         <!--title/movies-->
         <section class="col-11 mx-auto mb-5 main-page" id="main-trending-movies" style="max-width: 1042px;">
             <div class="row mx-auto text-center mx-1">
@@ -177,33 +327,17 @@
                 </div>
             </div>
         </section>
-        <!--Section Latest Movies-->
-
-
-        <!--Horizontal scroll section-->
-        <!--
-        <section class="col-11 mx-auto text-center movie-section mb-5 main-page" id="main-latest-movies" style="max-width: 1042px;">
-            <div class="movie-item main-page-template">
-                <a href="#" class="thumbnail-2" title="Movie Title">
-                    <div class="movie-image-container">
-                        <img src="https://via.placeholder.com/640x360" class="rounded-2 mb-2 thumbnail" height="225px" width="150px">
-                        <button class="release-year mb-3 ms-2">2022</button>
-                    </div>
-                    <p class="main-page-text">Movie Title</p>
-                </a>
-            </div>
-        </section>
-        -->
-        <!--Horizontal scroll section-->
+        <!--Section Trending Movies-->
 
 
         <!--Horizontal scroll section v2-->
-        <section class="col-sm-8 mx-auto text-center main-page">
-            <h3 class="text-light text-center mb-3">Latest Movies</h3>
+        <section class="col-sm-8 mx-auto text-center main-page horizontal-scroll">
+            <h3 class="text-light text-center mb-3 hScroll-title">Latest Movies</h3>
         </section>
-        <section class="col-11 mx-auto text-center mb-5 main-page cover movie-section" id="main-latest-movies" style="max-width: 1042px;">
-            <div class="scroll-images">
+        <section class="col-11 mx-auto text-center main-page cover movie-section horizontal-scroll" id="main-horizontal-scroll" style="max-width: 1042px;">
+            <div class="scroll-images" id="scroll-images">
                     <!-- child elements -->
+                    <!--
                     <div class="movie-item main-page-template">
                         <a href="#" class="thumbnail-2" title="Movie Title">
                             <div class="movie-image-container">
@@ -213,51 +347,7 @@
                             <p class="main-page-movie-title mb-2">Movie Title</p>
                         </a>
                     </div>
-                    <div class="movie-item main-page-template">
-                        <a href="#" class="thumbnail-2" title="Movie Title">
-                            <div class="movie-image-container">
-                                <img src="https://via.placeholder.com/640x360" class="rounded-2 mb-2 thumbnail" height="225px" width="150px">
-                                <button class="release-year mb-3 ms-2">2022</button>
-                            </div>
-                            <p class="main-page-movie-title mb-2">Movie Title</p>
-                        </a>
-                    </div>
-                    <div class="movie-item main-page-template">
-                        <a href="#" class="thumbnail-2" title="Movie Title">
-                            <div class="movie-image-container">
-                                <img src="https://via.placeholder.com/640x360" class="rounded-2 mb-2 thumbnail" height="225px" width="150px">
-                                <button class="release-year mb-3 ms-2">2022</button>
-                            </div>
-                            <p class="main-page-movie-title mb-2">Movie Title</p>
-                        </a>
-                    </div>
-                    <div class="movie-item main-page-template">
-                        <a href="#" class="thumbnail-2" title="Movie Title">
-                            <div class="movie-image-container">
-                                <img src="https://via.placeholder.com/640x360" class="rounded-2 mb-2 thumbnail" height="225px" width="150px">
-                                <button class="release-year mb-3 ms-2">2022</button>
-                            </div>
-                            <p class="main-page-movie-title mb-2">Movie Title</p>
-                        </a>
-                    </div>
-                    <div class="movie-item main-page-template">
-                        <a href="#" class="thumbnail-2" title="Movie Title">
-                            <div class="movie-image-container">
-                                <img src="https://via.placeholder.com/640x360" class="rounded-2 mb-2 thumbnail" height="225px" width="150px">
-                                <button class="release-year mb-3 ms-2">2022</button>
-                            </div>
-                            <p class="main-page-movie-title mb-2">Movie Title</p>
-                        </a>
-                    </div>
-                    <div class="movie-item main-page-template">
-                        <a href="#" class="thumbnail-2" title="Movie Title">
-                            <div class="movie-image-container">
-                                <img src="https://via.placeholder.com/640x360" class="rounded-2 mb-2 thumbnail" height="225px" width="150px">
-                                <button class="release-year mb-3 ms-2">2022</button>
-                            </div>
-                            <p class="main-page-movie-title mb-2">Movie Title</p>
-                        </a>
-                    </div>
+                    -->
                     <!-- more movie items here -->
             </div>
             <div class="col-11" style="max-width: 1042px;">
@@ -268,125 +358,9 @@
         <!--Horizontal scroll section v2-->
     </main>
 
-    <!-- *********** MOVIE PAGE ***********-->
-    <!--Banner-->
-    <section class="position-relative movie-page">
-        <img src="./img/cat_bg_3.png" class="movie-banner" alt="Banner">
-        <div class="position-absolute bottom-0 w-100 banner-overlay"></div>
-    </section>
-    <!--Section Movie-->
-    <section class="mb-5 movie-page">
-        <div class="col-12 text-center text-md-start mx-auto mb-3" style="max-width: 1024px;">
-            <a class="text-secondary mx-auto ms-3" href="#">Home > </a>
-            <a class="text-secondary mx-auto" href="javascript:void(0)">Movies > Movie title (2019)</a>
-        </div>
-        <div class="container d-flex justify-content-center">
-            <div class="row mx-auto movie-info">
-                <div class="col-12 col-md-auto mb-3 text-center">
-                    <img src="https://via.placeholder.com/640x360" class="rounded-2 mb-2 thumbnail" height="450px" width="300px">
-                </div>
-                <div class="col-12 col-sm-auto mx-1 text-start">
-                    <h4 class="movie-title text-light ms-0 mb-3">Movie Title</h4>
-                    <p class="movie-genre text-light ms-0 mb-2">Action, Drama</p>
-                    <p class="movie-rating text-light ms-0 mb-2">Rating: 8.5</p>
-                    <p class="movie-release-year text-light ms-0 mb-2">Release Year: 2023</p>
-                    <p class="movie-description text-light ms-0">Description</p>
-                    <div class="text-start" style="max-width: 320px;">
-                        <span class="text-light" style="font-size: 14px;">Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                            Fusce aliquam odio sed neque tincidunt, sed iaculis nulla lacinia. Nulla posuere risus ac augue maximus, vel pretium odio tempor.
-                            In at velit auctor, vehicula odio vel, facilisis nisl. Nunc id bibendum mauris.</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- *********** MOVIE PAGE ***********-->
-
-
-    <!-- *********** TRENDING PAGE ***********-->
-    <!--Main Banner-->
-    <section class="position-relative mb-1 trending-page">
-        <img src="./img/cat_bg_3.png" class="movie-banner" alt="Banner">
-        <div class="position-absolute bottom-0 w-100 banner-overlay"></div>
-        <div class="position-absolute top-50 start-50 translate-middle banner-description text-start">
-            <h2>Trending Movies</h2>
-        </div>
-    </section>
-    <!--navigation text-->
-    <div class="col-12 text-center text-md-start mx-auto mb-3 trending-page" style="max-width: 1024px;">
-        <a class="text-secondary mx-auto ms-3" href="#">Home > </a>
-        <a class="text-secondary mx-auto" href="javascript:void(0)">Trending</a>
-    </div>
-    <!--Page Latest Movies-->
-    <section class="col-11 mx-auto mb-5 trending-page" id="page-trending-movies" style="max-width: 1042px;">
-        <div class="row mx-auto text-center mx-1 pb-5"> <!--start here-->
-            <div class="col-6 col-sm-4 col-md-3 col-lg-2 mb-2 page-trending-template">
-                <a href="#" class="thumbnail-2" title="Movie Title">
-                    <div class="movie-image-container">
-                        <img src="https://via.placeholder.com/640x360" class="rounded-2 mb-2 thumbnail" height="225px" width="150px">
-                        <button class="release-year mb-3 ms-2">2023</button>
-                    </div>                        
-                    <p class="main-page-text">Movie Title</p>
-                </a>
-            </div>
-            <div class="col-6 col-sm-4 col-md-3 col-lg-2 mb-2 page-trending-template">
-                <a href="#" class="thumbnail-2" title="Movie Title">
-                    <div class="movie-image-container">
-                        <img src="https://via.placeholder.com/640x360" class="rounded-2 mb-2 thumbnail" height="225px" width="150px">
-                        <button class="release-year mb-3 ms-2">2022</button>
-                    </div>                        
-                    <p class="main-page-text">Movie Title</p>
-                </a>
-            </div>
-            <div class="col-6 col-sm-4 col-md-3 col-lg-2 mb-2 page-trending-template">
-                <a href="#" class="thumbnail-2" title="Movie Title">
-                    <div class="movie-image-container">
-                        <img src="https://via.placeholder.com/640x360" class="rounded-2 mb-2 thumbnail" height="225px" width="150px">
-                        <button class="release-year mb-3 ms-2">2023</button>
-                    </div>                        
-                    <p class="main-page-text">Movie Title</p>
-                </a>
-            </div>
-            <div class="col-6 col-sm-4 col-md-3 col-lg-2 mb-2 page-trending-template">
-                <a href="#" class="thumbnail-2" title="Movie Title">
-                    <div class="movie-image-container">
-                        <img src="https://via.placeholder.com/640x360" class="rounded-2 mb-2 thumbnail" height="225px" width="150px">
-                        <button class="release-year mb-3 ms-2">2022</button>
-                    </div>                        
-                    <p class="main-page-text">Movie Title</p>
-                </a>
-            </div>
-            <div class="col-6 col-sm-4 col-md-3 col-lg-2 mb-2 page-trending-template">
-                <a href="#" class="thumbnail-2" title="Movie Title">
-                    <div class="movie-image-container">
-                        <img src="https://via.placeholder.com/640x360" class="rounded-2 mb-2 thumbnail" height="225px" width="150px">
-                        <button class="release-year mb-3 ms-2">2023</button>
-                    </div>                        
-                    <p class="main-page-text">Movie Title</p>
-                </a>
-            </div>
-            <div class="col-6 col-sm-4 col-md-3 col-lg-2 mb-2 page-trending-template">
-                <a href="#" class="thumbnail-2" title="Movie Title">
-                    <div class="movie-image-container">
-                        <img src="https://via.placeholder.com/640x360" class="rounded-2 mb-2 thumbnail" height="225px" width="150px">
-                        <button class="release-year mb-3 ms-2">2022</button>
-                    </div>                        
-                    <p class="main-page-text">Movie Title</p>
-                </a>
-            </div>
-        </div>
-        <!--Load more button-->
-        <div class="col-sm-11 mx-auto text-center mb-5 main-page" id="category-buttons" style="max-width: 1042px;">
-            <button class="btn btn-danger" onclick="">Load more</button>
-        </div>
-    </section>
-    <!--Page Latest Movies-->
-    <!-- *********** TRENDING PAGE ***********-->
-
-
 
     <!-- Footer section -->
-    <footer class="pt-2 mt-5">
+    <footer class="pt-3 mt-5">
         <div class="container pb-2" style="max-width: 800px;">
             <div class="row align-items-center justify-content-center">
                 <div class="col-4 text-center">
@@ -420,8 +394,37 @@
     </footer>
     <!-- Footer section -->
 
+
+    <!--Modal section #about-->
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">About</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+            <div class="container-fluid">
+                <div class="row">
+                    <p class="mb-0 fw-semibold font-monospace"><i class="bi bi-film"></i> Thepopcorncat</p>
+                    <p class="lh-sm font-monospace">Práctica de consumo de APIs, con el uso de la API de TMDB y el curso de API de Platzi.</p>
+                    <p class="mb-0 fw-semibold font-monospace"><i class="bi bi-capsule"></i> Created by Jean M</p>
+                    <p><kbd>jeanmbcode@gmail.com</kbd></p>
+                </div>
+            </div>
+            </div>
+            <div class="modal-footer">
+            <button type="button" class="btn btn-dark" data-bs-dismiss="modal">Close</button>
+            </div>
+        </div>
+        </div>
+    </div>    
+    <!--Modal section #about-->
+
     <!--Axios-->
     <script src="https://cdn.jsdelivr.net/npm/axios@1.1.2/dist/axios.min.js"></script>
+    <script src="./src/nodes.js"></script>
     <script src="./src/secret.js"></script>
     <script src="./src/utils.js"></script>
     <script src="./src/main.js"></script>
