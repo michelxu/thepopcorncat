@@ -10,7 +10,7 @@ const api = axios.create({
 });
 const baseImgUrl = 'https://image.tmdb.org/t/p/w300'; //from api
 const baseBgUrl = 'https://image.tmdb.org/t/p/original'; //from api
-const defaultPosterImg = './img/default-poster-movie.png';
+const defaultPosterImg = '/img/default-poster-movie.png';
 const defaultBannerImg = './img/cat_bg_3.png';
 
 let currentPage = 1;
