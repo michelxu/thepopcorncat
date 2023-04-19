@@ -1,2 +1,3 @@
 # thepopcorncat
-Movie website project using themoviedb.org API
+Thepopcorncat: Sitio web de películas utilizando la API de themoviedb.org con el curso de <b>Manejo de API en JS</b> por Platzi.
+
