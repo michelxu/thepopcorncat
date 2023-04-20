@@ -81,3 +81,15 @@ function showElementsOnDom(className){
         element.classList.remove("inactive");
     });
 }
+
+
+
+// ************** Clear functions 
+
+function clearProvidersSection(){
+    deleteDivChilds('movie-on-streaming-container', 'class'); //Eliminar elementos
+    deleteDivChilds('movie-on-free-container', 'class');
+
+    onStreaming_title.className = 'movie-on-streaming-title text-light fw-medium ms-0 mb-1'; //Limpiar titles
+    onFree_title.className = 'movie-on-free-title text-light fw-medium ms-0 mb-1';
+}

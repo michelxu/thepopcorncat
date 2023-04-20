@@ -16,6 +16,7 @@ const defaultBannerImg = './img/cat_bg_3.png';
 let currentPage = 1;
 let apiLanguage = 'en-US'; // &language=en-US
 let apiCountry = 'US'; //&watch_region=US
+let providersList; //local providers, no llamar a api
 
 //Trending movies de la main page & main carousel
 async function getTrendingMoviesPreview(mainParentDiv){
@@ -169,7 +170,7 @@ async function getMoviesById(id){
     const { data } = await api(`/movie/${id}`);
 
     const movie = data;
-    console.log('Movie by id:');
+    //console.log('Movie by id:');
     console.log({data});
 
     try {
@@ -194,8 +195,8 @@ async function getRelatedMoviesById(id, mainParentDiv){
     const { data } = await api(`/movie/${id}/similar`);
 
     const movies = data.results;
-    console.log(`--> Related movies to: ${id} (${movies.length})`);
-    console.log({data, movies});
+    //console.log(`--> Related movies to: ${id} (${movies.length})`);
+    //console.log({data, movies});
 
     try {
         if (movies.length > 0){
@@ -226,17 +227,14 @@ async function getRelatedMoviesById(id, mainParentDiv){
 
 
 async function whereToWatchMovie(id){
-    //Limpiar la sección primero
-    deleteDivChilds('movie-on-streaming-container', 'class');
-    deleteDivChilds('movie-on-free-container', 'class');
-    onStreaming_title.className = 'movie-on-streaming-title text-light fw-medium ms-0 mb-1';
-    onFree_title.className = 'movie-on-free-title text-light fw-medium ms-0 mb-1';
+    clearProvidersSection(); //Clear section
 
     //const type = ''; //flatrate, ads, rent, buy
     const url = `/movie/${id}/watch/providers`;
     const { data } = await api(url);
-    console.log('--> Providers full data: ');
-    console.log({data});
+    providersList = data.results;
+    console.log('--> Providers List:');
+    console.log(providersList);
 
     const providerStreaming = data.results[apiCountry]?.flatrate ?? null;
     const providerFree = data.results[apiCountry]?.ads ?? null;
@@ -297,6 +295,50 @@ function AllMoviesPageHeader(cat_name, category_id) {
     childText = bannerDiv.querySelectorAll('h2')[0];
     childText.innerHTML = `${category_name}`; 
     
+}
+
+//Cambiar de región de providers sin volver a llamar a la API
+function newRegionProvider(country) {
+    clearProvidersSection(); //Clear section
+
+    //Evitar que carguen múltiples veces al mismo país
+    if(!country.includes(apiCountry)){
+        apiCountry = country.split('-')[0];
+
+        //Obtener los providers de la variable guardada, en lugar de llamar a la api.
+        const providerStreaming = providersList[apiCountry]?.flatrate ?? null;
+        const providerFree = providersList[apiCountry]?.ads ?? null;
+
+        console.log(`--> ${apiCountry}`);
+        console.log(providerStreaming);
+        console.log(providerFree);
+
+        //*********** Provider Streaming on DOM
+        if (providerStreaming){
+            providerStreaming.forEach(provider => {
+                //Modificar el DOM con movie data
+                createProvider(provider, 'movie-on-streaming-container');
+            });
+            onStreaming_title.innerText = `On streaming (${apiCountry})`;
+        } else {
+            onStreaming_title.innerText = `No streaming options (${apiCountry})`;
+            onStreaming_title.className = 'movie-on-streaming-title text-secondary fw-medium ms-0 mb-1';
+        }
+
+        //*********** Provider Ads/free on DOM
+        if (providerFree){
+            providerFree.forEach(provider2 => {
+                //Modificar el DOM con movie data
+                createProvider(provider2, 'movie-on-free-container');
+            });
+            onFree_title.innerText = `For free (${apiCountry})`;
+        } else {
+            onFree_title.innerText = `No free options (${apiCountry})`;
+            onFree_title.className = 'movie-on-free-title text-secondary fw-medium ms-0 mb-1';
+        }
+
+        dropDownCountry_btn.innerHTML = `<i class="bi bi-globe-americas"></i> ${country}`;
+    }   
 }
 
 

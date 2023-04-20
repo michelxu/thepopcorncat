@@ -99,8 +99,8 @@ function moviePage(){
 
     getMoviesById(movie_id);
 
-    currentPage = 1;
-    console.log('navigation currentpage: '+currentPage);
+    currentPage = 1; //reset
+    //console.log('navigation currentpage: '+currentPage);
 }
 
 //Listener para las categorias btns
@@ -157,17 +157,4 @@ function listenerLoadMoreButton(){
         }
         
     });
-}
-
-//Listener para actualizar la lista de providers según el país
-//Providers = plataformas que ofrecen la película
-function listenerDropdownMenu(country){
-    //Evitar que carguen múltiples veces al mismo país
-    if(!country.includes(apiCountry)){
-        const movie_id = parseInt(location.hash.split('=')[1]);
-        apiCountry = country.split('-')[0];
-
-        whereToWatchMovie(movie_id);
-        dropDownCountry_btn.innerHTML = `<i class="bi bi-globe-americas"></i> ${country}`;
-    }   
 }
